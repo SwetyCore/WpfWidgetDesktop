@@ -1,0 +1,29 @@
+﻿<UserControl
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" x:Class="WpfWidgetDesktop.View.Widgets.DigitalClock"
+             x:Name="root" Width="200" Height="200"
+             mc:Ignorable="d" Loaded="root_Loaded" >
+    <UserControl.ContextMenu>
+        <ContextMenu x:Name="menu">
+            <MenuItem Header="创建浮动视图" Click="MenuItem_Click"/>
+        </ContextMenu>
+    </UserControl.ContextMenu>
+    <Border CornerRadius="10" Background="White" Margin="3">
+        <Border.Effect>
+            <DropShadowEffect Color="Gray" ShadowDepth="0" BlurRadius="5" Opacity="0.3" Direction="0"/>
+        </Border.Effect>
+        <StackPanel VerticalAlignment="Center">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 30 0 0">
+                <TextBlock FontSize="54" Text="{Binding clockModel.HourAndMinute}"><Run Text="23:00"/></TextBlock>
+                <TextBlock Foreground="red" FontSize="20" Margin="5 32 0 0" Text="{Binding clockModel.Second}"><Run Text=":32"/></TextBlock>
+            </StackPanel>
+            <StackPanel HorizontalAlignment="Center">
+                <TextBlock FontSize="18" HorizontalAlignment="Center" Text="{Binding clockModel.Week}"><Run Text="周日"/></TextBlock>
+                <TextBlock FontSize="18" Text="{Binding clockModel.Date}"><Run Text="2022/03/17"/></TextBlock>
+            </StackPanel>
+        </StackPanel>
+
+    </Border>
+</UserControl>

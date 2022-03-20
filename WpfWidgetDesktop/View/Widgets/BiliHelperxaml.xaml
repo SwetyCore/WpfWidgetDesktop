@@ -1,0 +1,101 @@
+﻿<UserControl x:Class="WpfWidgetDesktop.View.Widgets.BiliHelperxaml"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WpfWidgetDesktop.View.Widgets"
+             mc:Ignorable="d" 
+             Height="200" Width="406"
+             
+         xmlns:svgc="http://sharpvectors.codeplex.com/svgc/"
+             xmlns:ui="http://schemas.modernwpf.com/2019">
+    <UserControl.ContextMenu>
+        <ContextMenu x:Name="menu">
+            <MenuItem Header="创建浮动视图" Click="MenuItem_Click"/>
+        </ContextMenu>
+    </UserControl.ContextMenu>
+    <Border CornerRadius="10" Background="White" Margin="3">
+        <Border.Effect>
+            <DropShadowEffect Color="Gray" ShadowDepth="0" BlurRadius="5" Opacity="0.3" Direction="0"/>
+        </Border.Effect>
+        <StackPanel>
+            <Viewbox>
+                <TabControl Width="500"
+                        Style="{StaticResource TabControlPivotStyle}" >
+                    <TabItem Header="视频">
+                        <TextBlock Text="未完成部件" />
+                    </TabItem>
+                    <TabItem Header="动态">
+                        <TextBlock Text="这里是动态" />
+                    </TabItem>
+                    <TabItem>
+                        <TabItem.Style>
+                            <Style>
+                                <Style.Triggers>
+                                    <Trigger Property="TabItem.IsFocused" Value="True">
+                                        <Setter Property="TabItem.Foreground" Value="Black"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TabItem.Style>
+                        <TabItem.Template>
+                            <ControlTemplate>
+                                <StackPanel Orientation="Horizontal" Margin="20 0 0 0">
+                                    <Button Width="310" Background="Transparent">
+                                        <ui:FlyoutService.Flyout>
+                                            <ui:Flyout>
+                                                <StackPanel Orientation="Vertical">
+                                                    <Image Width="350"  Source="https://i0.hdslb.com/bfs/space/768cc4fd97618cf589d23c2711a1d1a729f42235.png@.webp"></Image>
+                                                    <StackPanel Orientation="Horizontal" Height="140" Width="350" Background="White">
+                                                        <Border Width="52" Height="52" CornerRadius="40" Margin="10"  VerticalAlignment="Top">
+                                                            <Border.Background>
+                                                                <ImageBrush ImageSource="https://i1.hdslb.com/bfs/face/4fd4d2e0783ecb3c8e77954f03f6ce177337e9e4.jpg@96w_96h.webp">
+                                                                    
+                                                                </ImageBrush>
+                                                            </Border.Background>
+                                                        </Border>
+                                                        <StackPanel Margin="10">
+                                                            <StackPanel Orientation="Horizontal">
+                                                                <TextBlock FontWeight="Bold" FontSize="20" > Swety_Core</TextBlock>
+                                                          
+                                                                    <!--<svgc:SvgViewbox Margin="10 0 0 0" Height="16"  Source="../../Assets/Images/lv5.svg"></svgc:SvgViewbox>-->
+                                                                 
+
+                                                            </StackPanel>
+                                                            <StackPanel Orientation="Horizontal" >
+                                                                <TextBlock Margin="0 0 10 0">0 关注 </TextBlock>
+                                                                <TextBlock Margin="0 0 10 0">0 粉丝 </TextBlock>
+                                                                <TextBlock Margin="0 0 10 0">0 获赞 </TextBlock>
+                                                            </StackPanel>
+                                                            <TextBlock TextWrapping="Wrap" Width="280" Foreground="Gray"
+                                                                       Margin="0 20 0 0">
+                                                                我的QQ群还蛮大的，欢迎小伙伴们来群里Van！ 596299372
+                                                            </TextBlock>
+                                                        </StackPanel>
+                                                    </StackPanel>
+                                                </StackPanel>
+                                            </ui:Flyout>
+                                        </ui:FlyoutService.Flyout>
+                                        <StackPanel Orientation="Horizontal"  >
+                                            <Border Height="32" Width="32" CornerRadius="20" Margin="0 0 10 0" >
+                                                <Border.Background>skyblue</Border.Background>
+                                            </Border>
+
+                                            <TextBlock VerticalAlignment="Center" FontSize="20"  Visibility="Visible"  >
+                                            SwetyCore</TextBlock>
+                                            
+                                        </StackPanel>
+                                    </Button>
+
+                                </StackPanel>
+                            </ControlTemplate>
+                        </TabItem.Template>
+                    </TabItem>
+                </TabControl>
+                
+            </Viewbox>
+        </StackPanel>
+        
+        
+    </Border>
+</UserControl>

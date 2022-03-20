@@ -1,0 +1,166 @@
+﻿<UserControl x:Class="WpfWidgetDesktop.View.Widgets.GenshinHelper"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             x:Name="root"
+             xmlns:local="clr-namespace:WpfWidgetDesktop.View.Widgets" xmlns:ui="http://schemas.modernwpf.com/2019"
+             mc:Ignorable="d" Height="200" Width="200" Loaded="root_Loaded">
+    <UserControl.ContextMenu>
+        <ContextMenu x:Name="menu">
+            <MenuItem Header="创建浮动视图" Click="MenuItem_Click"/>
+        </ContextMenu>
+    </UserControl.ContextMenu>
+    <UserControl.Resources>
+        <Style x:Key="mdi-font" TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="../../Assets/Fonts/#Material Icons"/>
+        </Style>
+    </UserControl.Resources>
+    <Border CornerRadius="10" Margin="3">
+        <Border.Background>
+            <ImageBrush ImageSource="../../Assets/Images/GenshinBg.png">
+
+            </ImageBrush>
+        </Border.Background>
+        <Border.Effect>
+            <DropShadowEffect Color="Gray" ShadowDepth="0" BlurRadius="5" Opacity="0.3" Direction="0"/>
+        </Border.Effect>
+        <StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="5">
+                <Button Background="Transparent" Margin="5 0 0 0" Width="100" FontSize="18" FontWeight="Bold">
+                    <TextBlock Foreground="#816053">
+                        
+                    实时便笺
+                    </TextBlock>
+                    <ui:FlyoutService.Flyout>
+                        <ui:Flyout>
+                            <StackPanel>
+                                <StackPanel Orientation="Vertical">
+                                    <StackPanel Orientation="Horizontal">
+                                        
+                                        <Border Height="42" Width="42" BorderThickness="1" 
+                                                Margin="0 0 10 0"
+                                                BorderBrush="Gray" CornerRadius="40">
+                                            <Border.Background>
+                                                <ImageBrush ImageSource="../../Assets/Images/paimon.png">
+
+                                                </ImageBrush>
+                                            </Border.Background>
+                                        </Border>
+                                        <StackPanel>
+                                            <TextBlock Margin="5 0 0 0"
+                                                Text="{Binding myVm.RoleAndNote.Role.Nickname}"/>
+                                            <StackPanel Orientation="Horizontal" Margin="5">
+
+                                                <TextBlock Foreground="Gray" Margin="0 0 10 0"
+                                                       Text="{Binding myVm.RoleAndNote.Role.RegionName}"/>
+                                                <TextBlock Text="{Binding myVm.RoleAndNote.Role.Level}"/>
+                                                <TextBlock Text="级 UID:"/>
+                                                <TextBlock Text="{Binding myVm.RoleAndNote.Role.GameUid}"/>
+                                            </StackPanel>
+
+
+                                        </StackPanel>
+                                    </StackPanel>
+                                    <ListView ItemsSource="{Binding myVm.RoleAndNote.Note.Expeditions}" Margin="0 10 0 0">
+                                        <ListView.ItemTemplate>
+                                            <DataTemplate>
+                                                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                                    <Border Height="52" Width="52" Margin="0 -10 0 10">
+                                                        <Border.Background>
+                                                            <ImageBrush ImageSource="{Binding AvatarSideIcon}">
+
+                                                            </ImageBrush>
+                                                        </Border.Background>
+                                                    </Border>
+                                                    <TextBlock VerticalAlignment="Center" FontSize="20"
+                                                        Text="{Binding RemainedTimeFormatted}"></TextBlock>
+                                                </StackPanel>
+                                            </DataTemplate>
+                                        </ListView.ItemTemplate>
+                                    </ListView>
+                                </StackPanel>
+
+                                <TextBlock TextAlignment="Center" Margin="10" FontSize="24">
+                                        洞天宝钱
+                                    <TextBlock 
+                                            Text="{Binding myVm.RoleAndNote.Note.HomeCoinRecoveryTargetTimeFormatted}"/>
+                                </TextBlock>
+                            </StackPanel>
+                        </ui:Flyout>
+                    </ui:FlyoutService.Flyout>
+                </Button>
+                <Button Background="Transparent" Click="Button_Click">
+                    <TextBlock Style="{StaticResource mdi-font}" Text="&#xe627;" FontSize="18" Foreground="#816053"/>
+                </Button>
+                <Button Background="Transparent" x:Name="SaveBtn">
+
+                    <ui:FlyoutService.Flyout>
+                        <ui:Flyout>
+                            <StackPanel Margin="10" >
+                                <TextBlock FontSize="28">
+                                    Cookie编辑
+                                </TextBlock>
+
+                                <StackPanel  Margin="0 10 0 0" Orientation="Vertical">
+                                    <StackPanel Orientation="Horizontal" >
+                                        <TextBox Width="200" Margin="0 0 0 0" Height="50" Text="{Binding myVm.Edited}">
+
+                                        </TextBox>
+                                    </StackPanel>
+
+                                    <Button  HorizontalAlignment="Right" Margin=" 0 10 0 0" Click="Save_Change">
+                                            确定修改
+                                        </Button>
+                                </StackPanel>
+                            </StackPanel>
+                        </ui:Flyout>
+                    </ui:FlyoutService.Flyout>
+                    <TextBlock Style="{StaticResource mdi-font}" Text="&#xe3c9;" FontSize="18" Foreground="#816053"/>
+                </Button>
+            </StackPanel>
+
+            <ListBox Background="Transparent" Focusable="False" IsEnabled="False">
+                <ListBoxItem>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Width="44" Height="44" Source="../../Assets/Images/resin.png"/>
+                        <StackPanel Margin="10 0 0 0">
+                            <StackPanel Orientation="Horizontal">
+
+                                <TextBlock FontSize="20" Foreground="#4d69b2" 
+                                       Text="{Binding myVm.RoleAndNote.Note.CurrentResin}"/>
+                                <TextBlock FontSize="20" Foreground="#4d69b2" Text="/"/>
+                                <TextBlock FontSize="20" Foreground="#4d69b2" Text="{Binding myVm.RoleAndNote.Note.MaxResin}"/>
+                                
+                            </StackPanel>
+                                <TextBlock Foreground="#4d69b2" 
+                                       Text="{Binding myVm.RoleAndNote.Note.ResinRecoveryTargetTimeFormatted}"/>
+                        
+                            </StackPanel>
+                    </StackPanel>
+                </ListBoxItem>
+                <ListBoxItem>
+                    <StackPanel Orientation="Horizontal" >
+                        <Image Width="44" Height="44" Source="../../Assets/Images/dailyTask.png"/>
+                        <StackPanel Margin="10 0 0 0">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock FontSize="20" Foreground="#5d468a" 
+                                       Text="{Binding myVm.RoleAndNote.Note.FinishedTaskNum}"/>
+                                <TextBlock  FontSize="20" Foreground="#5d468a" Text="/"/>
+                                <TextBlock  FontSize="20" Foreground="#5d468a" Text="{Binding myVm.RoleAndNote.Note.TotalTaskNum}"/>
+                            </StackPanel>
+                            <TextBlock Foreground="#5d468a" Text="{Binding myVm.RoleAndNote.Note.ExtraTaskRewardDescription}"/>
+                        </StackPanel>
+                    </StackPanel>
+                </ListBoxItem>
+            </ListBox>
+
+
+
+
+
+
+
+        </StackPanel>
+    </Border>
+</UserControl>

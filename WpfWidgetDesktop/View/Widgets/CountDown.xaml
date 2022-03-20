@@ -1,0 +1,92 @@
+﻿<UserControl x:Class="WpfWidgetDesktop.View.Widgets.CountDown"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WpfWidgetDesktop.View.Widgets" xmlns:ui="http://schemas.modernwpf.com/2019"
+             x:Name="root"
+             mc:Ignorable="d" Height="200" Width="200" Loaded="UserControl_Loaded">
+    <UserControl.ContextMenu>
+        <ContextMenu x:Name="menu">
+            <MenuItem Header="创建浮动视图" Click="MenuItem_Click"/>
+        </ContextMenu>
+    </UserControl.ContextMenu>
+    <UserControl.Resources>
+        <Style x:Key="mdi-font" TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="../../Assets/Fonts/#Material Icons"/>
+        </Style>
+    </UserControl.Resources>
+    <Border CornerRadius="10" Background="White" Margin="3" d:IsLocked="True">
+        <Border.Effect>
+            <DropShadowEffect Color="Gray" ShadowDepth="0" BlurRadius="5" Opacity="0.3" Direction="0"/>
+        </Border.Effect>
+        <StackPanel >
+            <StackPanel Orientation="Horizontal" Height="38" d:IsLocked="True">
+
+                <!--<TextBlock Margin="0 10 0 0" FontSize="18" VerticalAlignment="Center">倒计时</TextBlock>-->
+                <Button Background="Transparent" Margin="10 0 0 0"  Height="47" Name="AddBtn">
+                    <ui:FlyoutService.Flyout>
+                        <ui:Flyout>
+                            <StackPanel Margin="10" >
+                                <TextBlock FontSize="28">
+                                    倒计时编辑
+                                </TextBlock>
+
+                                <StackPanel  Margin="0 10 0 0">
+                                    <StackPanel Orientation="Horizontal" >
+                                        <TextBlock FontSize="20" >名称</TextBlock>
+                                        <TextBox Width="200" Margin="10 0 0 0" Text="{Binding myVm.EditedName}">
+
+                                        </TextBox>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal" Margin="0 10">
+                                        <TextBlock FontSize="20">时间</TextBlock>
+
+                                        <TextBox Width="200" Margin="10 0 0 0" Text="{Binding myVm.SelectedTime}">
+
+                                        </TextBox>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+
+                                        <TextBlock FontSize="20">日期</TextBlock>
+                                        <DatePicker Margin="10 0 0 0" SelectedDate="{Binding myVm.SelectedDate}">
+                                    
+                                        </DatePicker>
+                                        
+                                    </StackPanel>
+
+                                </StackPanel>
+                                <!--<Calendar Margin="0 10 0 0" IsTodayHighlighted="False">
+
+                                </Calendar>-->
+                                <Button HorizontalAlignment="Right" Margin=" 0 10 0 0" Click="Button_Click">
+                                    确定修改
+                                </Button>
+                            </StackPanel>
+                        </ui:Flyout>
+                    </ui:FlyoutService.Flyout>
+                    <TextBlock  FontSize="28" Style="{StaticResource mdi-font}" 
+                                Foreground="#2195f2" Width="30" Height="33" Margin="0 7 0 0"
+                                d:IsLocked="True">&#xe425;</TextBlock>
+                </Button>
+
+                <TextBlock TextAlignment="Left" VerticalAlignment="Center" FontSize="18"
+                           Margin="0 8 0 0" d:IsLocked="True" Foreground="#2195f2"
+                           Text="{Binding myVm.EventName}">
+                </TextBlock>
+
+            </StackPanel>
+            <StackPanel d:IsLocked="True">
+                <TextBlock Margin="10 0 0 0" FontSize="12" d:IsLocked="True" d:IsHidden="True" Foreground="Gray">还有:</TextBlock>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 0 0 0" d:IsLocked="True">
+                    <TextBlock FontSize="70" Foreground="#2195f2" d:IsLocked="True" Text="{Binding myVm.LeftTime}"></TextBlock>
+                    <TextBlock VerticalAlignment="Bottom" Height="40" d:IsLocked="True" Text="{Binding myVm.Unit}" FontSize="20"></TextBlock>
+
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" d:IsLocked="True">
+                    <TextBlock TextAlignment="Right" Foreground="Gray" Margin="0 30 10 0" d:IsLocked="True" Text="{Binding myVm.Target}"></TextBlock>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+    </Border>
+</UserControl>
