@@ -1,0 +1,101 @@
+﻿<UserControl x:Class="WpfWidgetDesktop.View.Widgets.AISchedule"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WpfWidgetDesktop.View.Widgets"
+             mc:Ignorable="d" 
+             Height="406" Width="406" Loaded="UserControl_Loaded"
+             x:Name="root"
+             >
+
+    <UserControl.ContextMenu>
+        <ContextMenu x:Name="menu">
+            <MenuItem Header="创建浮动视图" Click="MenuItem_Click"/>
+        </ContextMenu>
+    </UserControl.ContextMenu>
+
+
+    <Border CornerRadius="10" Background="White" Margin="3">
+        <Border.Effect>
+            <DropShadowEffect Color="Gray" ShadowDepth="0" BlurRadius="5" Opacity="0.3" Direction="0"/>
+        </Border.Effect>
+        <StackPanel>
+            <Grid  Margin="5 5 5 5" Height="40px" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="6*"/>
+                    <ColumnDefinition Width="4*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                
+                <StackPanel Grid.Column="0" Orientation="Horizontal" Grid.ColumnSpan="2">
+                    <Border Width="30" Height="30" Margin="5">
+                        <Border.Background>
+                            <!--<ImageBrush/>-->
+                            <ImageBrush ImageSource="../../Assets/Images/aischedule.ico"></ImageBrush>
+                        </Border.Background>
+                    </Border>
+                    <TextBlock FontSize="18" Foreground="#FF383838" VerticalAlignment="Center">小爱课程表</TextBlock>
+
+                </StackPanel>
+
+                <StackPanel Grid.Column="1"
+                    Orientation="Horizontal" HorizontalAlignment="Left" >
+                    <TextBlock FontSize="16" VerticalAlignment="Center"
+                               Foreground="Gray" TextAlignment="Right" 
+                               Text="{Binding myVm.Week}" />
+                    <TextBlock FontSize="16" VerticalAlignment="Center" 
+                               Foreground="Gray" TextAlignment="Right" 
+                               Text="{Binding myVm.Day}"/>
+
+                </StackPanel>
+
+                <Button Grid.Column="2" Background="Transparent" Content="刷新" Click="Button_Click"/>
+            </Grid>
+            <ScrollViewer Height="330">
+                <ListView   Margin="10 0 10 10"
+                        x:Name="BaseExample"
+                        ItemsSource="{Binding myVm.CI}"
+                        BorderThickness="1"
+                        Width="380"
+                        IsEnabled="False"
+                        HorizontalAlignment="Left" >
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <DataTemplate.Resources>
+                                <Style TargetType="TextBlock" x:Name="item">
+                                    <Setter Property="Foreground" Value="#D32F2F"/>
+                                </Style>
+                            </DataTemplate.Resources>
+                            <Border Background="#FFEBEE" Width="350" CornerRadius="10" Margin="0 0 0 5">
+                                <StackPanel Orientation="Horizontal" Margin="10 7 0 0">
+                                    <StackPanel Width="50">
+                                        <TextBlock  Text="{Binding sections}"/>
+                                        <TextBlock  Text="节"/>
+                                        <TextBlock/>
+
+                                    </StackPanel>
+                                    <StackPanel>
+                                        <TextBlock FontSize="18" FontWeight="Bold" Text="{Binding name}"/>
+                                        <StackPanel Orientation="Horizontal" Margin="0 2 0 0">
+                                            <TextBlock Text="|"/>
+                                            <TextBlock Text="{Binding sections}"/>
+                                            <TextBlock Text="节|"/>
+                                            <TextBlock Text="{Binding position}"/>
+                                            <TextBlock Text="|"/>
+                                            <TextBlock Text="{Binding teacher}"/>
+                                            <TextBlock Text="|"/>
+                                        </StackPanel>
+                                    </StackPanel>
+                                </StackPanel>
+                            </Border>
+
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+            </ScrollViewer>
+            
+        </StackPanel>
+    </Border>
+</UserControl>

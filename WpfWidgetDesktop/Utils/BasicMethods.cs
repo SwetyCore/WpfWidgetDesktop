@@ -48,6 +48,7 @@ namespace MyWidget2.Utils
             }
             return "0";
         }
+
         public static void SetBrightness(int value)
         {
             ManagementClass mclass = new ManagementClass("WmiMonitorBrightnessMethods");
@@ -62,6 +63,14 @@ namespace MyWidget2.Utils
                 object[] args = new object[] { timeout, brightness };
                 instance.InvokeMethod("WmiSetBrightness", args);
             }
+        }
+
+        public static DateTime StampToDateTime(string timeStamp)
+        {
+            DateTime dateTimeStart = TimeZone.CurrentTimeZone.ToLocalTime(new DateTime(1970, 1, 1));
+            long lTime = long.Parse(timeStamp + "0000");
+            TimeSpan toNow = new TimeSpan(lTime);
+            return dateTimeStart.Add(toNow);
         }
     }
 }

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Threading;
 using WpfWidgetDesktop.Model;
 using WpfWidgetDesktop.Utils;
@@ -48,21 +49,21 @@ namespace WpfWidgetDesktop.ViewModel
             TimeSpan ts = cfg.Date - timeB; //计算时间差
 
             string time = "";
-            if (ts.Days>2){
+            if (ts.Days!=0){
                 time = ts.Days.ToString();
                 myVm.Unit = "天";
             }
-            else if (ts.Hours > 1)
+            else if (ts.Hours != 0)
             {
                 time = ts.Hours.ToString();
                 myVm.Unit = "时";
             }
-            else if (ts.Minutes > 1)
+            else if (ts.Minutes != 0)
             {
                 time = ts.Minutes.ToString();
                 myVm.Unit = "分";
             }
-            else if (ts.Seconds >1)
+            else if (ts.Seconds !=0)
             {
                 time= ts.Seconds.ToString();
                 myVm.Unit = "秒";
@@ -77,12 +78,19 @@ namespace WpfWidgetDesktop.ViewModel
         }
         public void Save()
         {
-            string datetime = myVm.SelectedDate.ToString("d")+$" { myVm.SelectedTime}";
-            myVm.Target = datetime;
-            myVm.EventName=myVm.EditedName;
-            cfg.Date = DateTime.Parse(datetime);
-            cfg.Event = myVm.EventName;
-            SettingProvider.Set(id, cfg);
+            try
+            {
+
+                string datetime = myVm.SelectedDate.ToString("d") + $" { myVm.SelectedTime}";
+                myVm.Target = datetime;
+                myVm.EventName = myVm.EditedName;
+                cfg.Date = DateTime.Parse(datetime);
+                cfg.Event = myVm.EventName;
+                SettingProvider.Set(id, cfg);
+            }
+            catch (Exception ex) {
+                MessageBox.Show("时间格式错误,修改失败!");
+            }
         }
     }
 

@@ -15,9 +15,9 @@
         MaxWidth="406"
         Window.SizeToContent="WidthAndHeight"
         Title="LayerWindow"
-        
+        Margin="3"
         Topmost="{Binding ElementName=TopMost,Path=IsChecked}" MouseLeftButtonDown="Window_MouseLeftButtonDown" Activated="Window_Activated" Deactivated="Window_Deactivated">
-    <Border BorderThickness="1" BorderBrush="#006cbe" CornerRadius="5" x:Name="border">
+    <Border BorderThickness="0" BorderBrush="#006cbe" CornerRadius="5" x:Name="border" >
         <!--<Viewbox HorizontalAlignment="Center">-->
     <StackPanel Orientation="Vertical" x:Name="control">
         <StackPanel.ContextMenu>

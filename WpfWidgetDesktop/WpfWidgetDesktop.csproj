@@ -15,7 +15,6 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Assets\Fonts\MDI.ttf" />
-    <Resource Include="Assets\Fonts\zh-cn.ttf" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
@@ -58,5 +57,11 @@
   <ItemGroup>
     <Compile Remove="Utils\GenshinDailyNote.cs" />
     <Compile Remove="Utils\Mihoyo\Helper\Setting.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Assets\Images\aischedule.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Images\aischedule.ico" />
   </ItemGroup>
 </Project>

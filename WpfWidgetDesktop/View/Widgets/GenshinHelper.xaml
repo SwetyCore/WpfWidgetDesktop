@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              x:Name="root"
-             xmlns:local="clr-namespace:WpfWidgetDesktop.View.Widgets" xmlns:ui="http://schemas.modernwpf.com/2019"
+             xmlns:local="clr-namespace:WpfWidgetDesktop.View.Widgets" xmlns:ui="http://schemas.modernwpf.com/2019" xmlns:converter="clr-namespace:WpfWidgetDesktop.Converter"
              mc:Ignorable="d" Height="200" Width="200" Loaded="root_Loaded">
     <UserControl.ContextMenu>
         <ContextMenu x:Name="menu">
@@ -15,6 +15,9 @@
         <Style x:Key="mdi-font" TargetType="TextBlock">
             <Setter Property="FontFamily" Value="../../Assets/Fonts/#Material Icons"/>
         </Style>
+
+
+
     </UserControl.Resources>
     <Border CornerRadius="10" Margin="3">
         <Border.Background>

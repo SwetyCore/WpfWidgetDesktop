@@ -12,12 +12,12 @@
         Background="#4FFFFFFF"
         Title="MainWindow" Height="850" Width="630" Loaded="Window_Loaded">
 
-    <Grid Width="610">
+    <Grid Width="620">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="10*"/>
         </Grid.RowDefinitions>
-        <StackPanel Width="610" Grid.Row="0" VerticalAlignment="Center">
+        <StackPanel Width="620" Grid.Row="0" VerticalAlignment="Center">
             <StackPanel   Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <Button  Focusable="False" Background="Transparent">
                     <ui:PersonPicture
@@ -27,7 +27,6 @@
                                   />
                     <ui:FlyoutService.Flyout>
                         <ui:MenuFlyout x:Name="Flyout1">
-                            <MenuItem Header="更换头像/昵称" />
                             <MenuItem
                                         Header="设置"/>
                             <MenuItem Header="关闭此窗口" Click="MenuItem_Click" />
@@ -44,19 +43,19 @@
             </StackPanel>
 
         </StackPanel>
-        <ScrollViewer VerticalScrollBarVisibility="Auto"  Grid.Row="1" Width="600">
+        <ScrollViewer VerticalScrollBarVisibility="Auto"  Grid.Row="1" Width="620">
                 <ScrollViewer.Content>
                     <panels:TilePanel TileHeight="200" TileWidth="200" TileCount="3" >
 
                         <widgets:DigitalClock/>
                         <widgets:BiliHelperxaml panels:TilePanel.WidthPix="2"/>
-                        <widgets:MsToDo panels:TilePanel.HeightPix="2" panels:TilePanel.WidthPix="2"/>
+                    <widgets:MsToDo panels:TilePanel.HeightPix="2" panels:TilePanel.WidthPix="2"/>
 
-                        <widgets:NeteaseMusicControler panels:TilePanel.WidthPix="2"></widgets:NeteaseMusicControler>
+                    <widgets:AISchedule panels:TilePanel.HeightPix="2" panels:TilePanel.WidthPix="2"/>
+                    <widgets:NeteaseMusicControler panels:TilePanel.WidthPix="2"></widgets:NeteaseMusicControler>
                         <widgets:ShortcutSwitch/>
                         <widgets:CountDown/>
                         <widgets:PerformanceMonitor panels:TilePanel.WidthPix="2"/>
-
                         <widgets:Album panels:TilePanel.HeightPix="2"/>
 
                         <widgets:GenshinHelper/>

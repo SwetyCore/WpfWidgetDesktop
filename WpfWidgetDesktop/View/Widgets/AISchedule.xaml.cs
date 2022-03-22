@@ -17,28 +17,26 @@ using WpfWidgetDesktop.ViewModel;
 namespace WpfWidgetDesktop.View.Widgets
 {
     /// <summary>
-    /// BiliHelperxaml.xaml 的交互逻辑
+    /// AISchedule.xaml 的交互逻辑
     /// </summary>
-    public partial class BiliHelperxaml : UserControl
+    public partial class AISchedule : UserControl
     {
-        BiliVM vm=new BiliVM();
-        public BiliHelperxaml()
+        AIScheduleVM vm = new();
+        public AISchedule()
         {
             InitializeComponent();
             this.DataContext = vm;
         }
 
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            vm.LoadTable();
+        }
+
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
 
-            new LayerWindow(new BiliHelperxaml()).Show();
-
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            //vm.GetUserInfo();
-            vm.GetCard();
+            new LayerWindow(new AISchedule()).Show();
 
         }
 
@@ -49,17 +47,6 @@ namespace WpfWidgetDesktop.View.Widgets
                 root.ContextMenu = null;
             }
 
-            vm.GetCard(false);
-        }
-
-        private void SaveBtn(object sender, RoutedEventArgs e)
-        {
-            if (vm.myVm.Cookie == ""|vm.myVm.Cookie==null)
-            {
-                MessageBox.Show("Cookie不能为空!");
-                return;
-            }
-            vm.Save();
         }
     }
 }

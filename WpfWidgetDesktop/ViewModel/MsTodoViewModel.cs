@@ -11,6 +11,7 @@ using WpfWidgetDesktop.Common;
 using WpfWidgetDesktop.Converter;
 using System.Windows.Media.Imaging;
 using System.Windows.Media;
+using System.Windows;
 
 namespace WpfWidgetDesktop.ViewModel
 {
@@ -67,11 +68,12 @@ namespace WpfWidgetDesktop.ViewModel
         }
         private void Login(object o)
         {
-            LoginAsync();
+
+                LoginAsync();
         }
         private async void LoginAsync()
         {
-
+            try { 
             await GetListsAsync();
 
             var stream = await graphClient.Me.Photo.Content
@@ -79,6 +81,13 @@ namespace WpfWidgetDesktop.ViewModel
                 .GetAsync();
             ImageSourceConverter imageSourceConverter = new ImageSourceConverter();
             msTodoModel.HeadImage = (ImageSource)imageSourceConverter.ConvertFrom(stream);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString(),"未能授权!");
+            }
+
         }
         private async void DoneTask(object o)
         {

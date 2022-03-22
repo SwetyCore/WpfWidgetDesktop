@@ -6,9 +6,9 @@
              xmlns:local="clr-namespace:WpfWidgetDesktop.View.Widgets"
              mc:Ignorable="d" 
              Height="200" Width="406"
-             
-         xmlns:svgc="http://sharpvectors.codeplex.com/svgc/"
-             xmlns:ui="http://schemas.modernwpf.com/2019">
+             x:Name="root"
+            xmlns:svgc="http://sharpvectors.codeplex.com/svgc/"
+             xmlns:ui="http://schemas.modernwpf.com/2019" Loaded="UserControl_Loaded">
     <UserControl.ContextMenu>
         <ContextMenu x:Name="menu">
             <MenuItem Header="创建浮动视图" Click="MenuItem_Click"/>
@@ -22,12 +22,20 @@
             <Viewbox>
                 <TabControl Width="500"
                         Style="{StaticResource TabControlPivotStyle}" >
-                    <TabItem Header="视频">
-                        <TextBlock Text="未完成部件" />
-                    </TabItem>
                     <TabItem Header="动态">
-                        <TextBlock Text="这里是动态" />
+                        <TextBlock Text="这里是动态,还没有完成." />
                     </TabItem>
+
+                    <TabItem Header="设置">
+                        <StackPanel Margin="5">
+                            <TextBlock Text="Cookie:" FontSize="30"/>
+                            <TextBox AcceptsReturn="True" Height="80" Text="{Binding myVm.Cookie}" FontSize="20">
+                                
+                            </TextBox>
+                            <Button Content="保存" Margin="0 10 0 0" FontSize="20" HorizontalAlignment="Right" Click="SaveBtn" />
+                        </StackPanel>
+                    </TabItem>
+                    
                     <TabItem>
                         <TabItem.Style>
                             <Style>
@@ -41,35 +49,39 @@
                         <TabItem.Template>
                             <ControlTemplate>
                                 <StackPanel Orientation="Horizontal" Margin="20 0 0 0">
-                                    <Button Width="310" Background="Transparent">
+                                    <Button Width="310" Background="Transparent" Click="Button_Click" >
                                         <ui:FlyoutService.Flyout>
                                             <ui:Flyout>
                                                 <StackPanel Orientation="Vertical">
-                                                    <Image Width="350"  Source="https://i0.hdslb.com/bfs/space/768cc4fd97618cf589d23c2711a1d1a729f42235.png@.webp"></Image>
+                                                    <Image Width="350"  Source="{Binding myVm.Card.data.space.s_img}"></Image>
                                                     <StackPanel Orientation="Horizontal" Height="140" Width="350" Background="White">
                                                         <Border Width="52" Height="52" CornerRadius="40" Margin="10"  VerticalAlignment="Top">
                                                             <Border.Background>
-                                                                <ImageBrush ImageSource="https://i1.hdslb.com/bfs/face/4fd4d2e0783ecb3c8e77954f03f6ce177337e9e4.jpg@96w_96h.webp">
+                                                                <ImageBrush ImageSource="{Binding myVm.Card.data.card.face}">
                                                                     
                                                                 </ImageBrush>
                                                             </Border.Background>
                                                         </Border>
                                                         <StackPanel Margin="10">
                                                             <StackPanel Orientation="Horizontal">
-                                                                <TextBlock FontWeight="Bold" FontSize="20" > Swety_Core</TextBlock>
-                                                          
-                                                                    <!--<svgc:SvgViewbox Margin="10 0 0 0" Height="16"  Source="../../Assets/Images/lv5.svg"></svgc:SvgViewbox>-->
+                                                                <TextBlock FontWeight="Bold" FontSize="20" Text="{Binding myVm.Card.data.card.name}"></TextBlock>
+                                                                <StackPanel VerticalAlignment="Bottom" Margin="5" Orientation="Horizontal">
+                                                                    <TextBlock Text="Lv"/>
+                                                                    <TextBlock Text="{Binding myVm.Card.data.card.level_info.current_level}"/>
+                                                                </StackPanel>
+                                                                <!--<svgc:SvgViewbox Margin="10 0 0 0" Height="16"  Source="../../Assets/Images/lv5.svg"></svgc:SvgViewbox>-->
                                                                  
 
                                                             </StackPanel>
                                                             <StackPanel Orientation="Horizontal" >
-                                                                <TextBlock Margin="0 0 10 0">0 关注 </TextBlock>
-                                                                <TextBlock Margin="0 0 10 0">0 粉丝 </TextBlock>
-                                                                <TextBlock Margin="0 0 10 0">0 获赞 </TextBlock>
+
+                                                                <TextBlock Text="关注:"/>
+                                                                <TextBlock Margin="0 0 10 0" Text="{Binding myVm.Card.data.card.friend}"></TextBlock><TextBlock Text="粉丝:"/>
+                                                                <TextBlock Margin="0 0 10 0" Text="{Binding myVm.Card.data.card.fans}"></TextBlock><TextBlock Text="获赞:"/>
+                                                                <TextBlock Margin="0 0 10 0" Text="{Binding myVm.Card.data.like_num}"></TextBlock>
                                                             </StackPanel>
                                                             <TextBlock TextWrapping="Wrap" Width="280" Foreground="Gray"
-                                                                       Margin="0 20 0 0">
-                                                                我的QQ群还蛮大的，欢迎小伙伴们来群里Van！ 596299372
+                                                                       Margin="0 20 0 0" Text="{Binding myVm.Card.data.card.sign}">
                                                             </TextBlock>
                                                         </StackPanel>
                                                     </StackPanel>
@@ -78,11 +90,13 @@
                                         </ui:FlyoutService.Flyout>
                                         <StackPanel Orientation="Horizontal"  >
                                             <Border Height="32" Width="32" CornerRadius="20" Margin="0 0 10 0" >
-                                                <Border.Background>skyblue</Border.Background>
+                                                <Border.Background>
+                                                    <ImageBrush ImageSource="{Binding myVm.Card.data.card.face}"/>
+                                                </Border.Background>
                                             </Border>
 
-                                            <TextBlock VerticalAlignment="Center" FontSize="20"  Visibility="Visible"  >
-                                            SwetyCore</TextBlock>
+                                            <TextBlock VerticalAlignment="Center" FontSize="20"  Visibility="Visible"  
+                                                       Text="{Binding myVm.Card.data.card.name}"></TextBlock>
                                             
                                         </StackPanel>
                                     </Button>

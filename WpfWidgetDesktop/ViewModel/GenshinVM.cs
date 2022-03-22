@@ -49,6 +49,12 @@ namespace WpfWidgetDesktop.ViewModel
         }
         private void dt_Tick(object o, EventArgs e)
         {
+            if (cfg.Cookie=="" | cfg.Cookie==null)
+            {
+
+                return;
+            }
+
             Refresh();
 
         }
