@@ -26,12 +26,26 @@ namespace WpfWidgetDesktop.ViewModel
 
         private bool IsIn(string[] a,string b)
         {
+            Console.WriteLine(a);
             foreach (string a2 in a)
             {
                 if (a2 == b) { return true; }
             }
             return false;
         }
+        public int Week2Int(DayOfWeek w)
+        {
+            var a=Convert.ToInt32(w);
+            if (a == 0)
+            {
+                return 7;
+            }
+            else
+            {
+                return a;
+            }
+        }
+
 
         public async void LoadTable(bool tip=true)
         {
@@ -42,7 +56,7 @@ namespace WpfWidgetDesktop.ViewModel
                 setting = tr.data.setting;
                 var week=Update();
 
-                myVm.CI = tr.data.courses.Where(x => IsIn(x.weeks.Split(','),week)&&x.day== Convert.ToInt32( DateTime.Now.DayOfWeek)).ToList();
+                myVm.CI = tr.data.courses.Where(x => IsIn(x.weeks.Split(','),week)&&x.day== Week2Int( DateTime.Now.DayOfWeek)).ToList();
 
             }
             catch (Exception ex)
