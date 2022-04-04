@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WpfWidgetDesktop.View.Widgets" xmlns:ui="http://schemas.modernwpf.com/2019"
              x:Name="root"
-             mc:Ignorable="d" Height="200" Width="200" Loaded="UserControl_Loaded">
+             mc:Ignorable="d" Style="{StaticResource min-card}" Loaded="UserControl_Loaded">
     <UserControl.ContextMenu>
         <ContextMenu x:Name="menu">
             <MenuItem Header="创建浮动视图" Click="MenuItem_Click"/>

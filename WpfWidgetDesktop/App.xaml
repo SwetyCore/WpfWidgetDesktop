@@ -5,6 +5,20 @@
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
+            <Style x:Key="min-card" TargetType="UserControl">
+                <Setter Property="Height" Value="200"/>
+                <Setter Property="Width" Value="200"/>
+            </Style>
+
+            <Style x:Key="mid-card" TargetType="UserControl">
+                <Setter Property="Height" Value="200"/>
+                <Setter Property="Width" Value="406"/>
+            </Style>
+
+            <Style x:Key="max-card" TargetType="UserControl">
+                <Setter Property="Height" Value="406"/>
+                <Setter Property="Width" Value="406"/>
+            </Style>
             <ResourceDictionary.MergedDictionaries>
                 <ui:ThemeResources />
                 <ui:XamlControlsResources />

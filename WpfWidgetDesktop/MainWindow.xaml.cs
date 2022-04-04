@@ -35,9 +35,11 @@ namespace WpfWidgetDesktop
             this.Left = workWidth - 635;
             this.Top = 5;
 
-            IntPtr hWnd = new WindowInteropHelper(GetWindow(this)).EnsureHandle();
-            MyWindowStyle.EnableBlur(hWnd);
-            MyWindowStyle.EnableRoundWindow(hWnd);
+            this.ShowInTaskbar = false;
+
+            //IntPtr hWnd = new WindowInteropHelper(GetWindow(this)).EnsureHandle();
+            //MyWindowStyle.EnableBlur(hWnd);
+            //MyWindowStyle.EnableRoundWindow(hWnd);
 
 
         }
@@ -71,6 +73,28 @@ namespace WpfWidgetDesktop
         {
 
             hello.Text = $"{GetNow()}{System.Environment.UserName}";
+        }
+
+        private void MenuItem_Click_1(object sender, RoutedEventArgs e)
+        {
+            if (WindowState != WindowState.Minimized)
+            {
+                WindowState = WindowState.Minimized;
+            }
+
+        }
+
+        private void Window_StateChanged(object sender, EventArgs e)
+        {
+            if (this.WindowState == WindowState.Minimized)
+            {
+                this.ShowInTaskbar = true;
+            }
+            else
+            {
+                this.ShowInTaskbar = false; 
+            }
+
         }
     }
 }

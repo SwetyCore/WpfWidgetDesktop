@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WpfWidgetDesktop.View.Widgets"
              mc:Ignorable="d" 
-             Height="406" Width="406" Loaded="UserControl_Loaded"
+             Style="{StaticResource max-card}" Loaded="UserControl_Loaded"
              x:Name="root"
              >
 

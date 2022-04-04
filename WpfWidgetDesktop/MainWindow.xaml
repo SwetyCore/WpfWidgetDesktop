@@ -5,13 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfWidgetDesktop" xmlns:ui="http://schemas.modernwpf.com/2019" xmlns:widgets="clr-namespace:WpfWidgetDesktop.View.Widgets" xmlns:panels="clr-namespace:Util.Panels"
         mc:Ignorable="d"
-        
+        Background="#01000000"
         ResizeMode="NoResize"
         WindowStyle="None"
         AllowsTransparency="True"
-        Background="#4FFFFFFF"
-        Title="MainWindow" Height="850" Width="630" Loaded="Window_Loaded">
+        Title="MainWindow" Height="850" Width="630" Loaded="Window_Loaded" StateChanged="Window_StateChanged">
 
+    <!--Background="#4FFFFFFF"-->
     <Grid Width="620">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
@@ -29,6 +29,7 @@
                         <ui:MenuFlyout x:Name="Flyout1">
                             <MenuItem
                                         Header="设置"/>
+                            <MenuItem Header="最小化" Click="MenuItem_Click_1" />
                             <MenuItem Header="关闭此窗口" Click="MenuItem_Click" />
 
 
